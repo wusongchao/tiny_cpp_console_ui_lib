@@ -1,7 +1,8 @@
 # HOW TO USE IT
    
 Please forgive my poor English.   
-   
+
+![Alt text](https://github.com/wusongchao/tiny_cpp_console_ui_lib/raw/master/main.png)
    
 First,define a class inherit from `UIView`,like this:
 ```cpp
