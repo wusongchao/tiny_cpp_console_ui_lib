@@ -125,4 +125,10 @@ const string UILoginViewController::loadView(){
     return "";
 }
 ```
-imple your 
+
+In the constructor,you should addEventListener for the UIInputField(or UITableView),
+the main logic is written in the loadView Function,when the user finish his/her input,
+the UIInputField will notify its Listener,and the information can be gotten in the information map.
+
+In this sample,StaffStore is a singleton,belongs to the `Model` layer.
+I've made a UIHintViewController to 
