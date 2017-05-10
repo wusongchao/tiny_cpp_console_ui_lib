@@ -56,4 +56,5 @@ UILoginView::UILoginView(CGRect f,UIViewborderStyle ub):
 }
 ```
 
-now we have three kinds of UIElement:UILabel,UIInputField,UIOptionView,
+Now we have three kinds of UIElement:UILabel,UIInputField,UIOptionView,
+you can addEventListener for UIInputField or UIOptionView
