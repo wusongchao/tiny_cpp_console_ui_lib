@@ -1,6 +1,6 @@
 # HOW TO USE IT
    
-please for give my poor English   
+Please forgive my poor English.   
    
    
 First,define a class inherit from `UIView`,like this:
@@ -35,10 +35,10 @@ UILoginView::UILoginView(CGRect f,UIViewborderStyle ub):
     UILabel *topic = new UILabel(topicFrame,"         Welcome To The Management System",EqualSignBorder);
     CGRect subTitleFrame = CGRectMake(24,6,40,1);
     UILabel *subTitle = new UILabel(subTitleFrame,"Please input your ID and Password");
-	CGRect hintFrame = CGRectMake(15,8,55,1);
-	UILabel *hintLabel = new UILabel(hintFrame,"Because of VC's bug,please press the [Enter] twice");
+    CGRect hintFrame = CGRectMake(15,8,55,1);
+    UILabel *hintLabel = new UILabel(hintFrame,"Because of VC's bug,please press the [Enter] twice");
 
-	CGRect userIDLabelFrame = CGRectMake(21,14,4,1);
+    CGRect userIDLabelFrame = CGRectMake(21,14,4,1);
     UILabel *userIDLabel = new UILabel(userIDLabelFrame,"ID:");
     CGRect passWordLabelFrame = CGRectMake(21,15,9,1);
     UILabel *passWordLabel = new UILabel(passWordLabelFrame,"password:");
@@ -48,7 +48,7 @@ UILoginView::UILoginView(CGRect f,UIViewborderStyle ub):
     UIInputField *passwordInputField = new UIInputField(passwordInputFieldFrame,"password",Password);
     addSubView(topic);
     addSubView(subTitle);
-	addSubView(hintLabel);
+    addSubView(hintLabel);
     addSubView(userIDLabel);
     addSubView(passWordLabel);
     addSubView(idInputField);//5
