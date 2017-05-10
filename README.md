@@ -2,6 +2,7 @@
    
 Please forgive my poor English.   
 
+And that is how it looks:
 ![Alt text](https://github.com/wusongchao/tiny_cpp_console_ui_lib/raw/master/main.png)
    
 First,define a class inherit from `UIView`,like this:
@@ -132,4 +133,63 @@ the main logic is written in the loadView Function,when the user finish his/her 
 the UIInputField will notify its Listener,and the information can be gotten in the information map.
 
 In this sample,StaffStore is a singleton,belongs to the `Model` layer.
-I've made a UIHintViewController to 
+I've made a UIHintViewController for you to display some simple information,
+such as Error information.
+
+## In the Main Loop
+
+```cpp
+    map<string,UIViewController*> viewControllers;
+    ServiceTypeStore::sharedStore();
+    ClientStore::sharedStore()->loadData();
+    StaffStore::sharedStore()->loadData();
+    FinanceStore::sharedStore()->loadMachineData();
+
+    //create the LoginView,then add it to the map
+    CGRect windowFrame = CGRectMake(0,0,80,26);
+    UILoginView *loginView = new UILoginView(windowFrame,StarBorder);
+    UILoginViewController *loginViewController = new UILoginViewController(loginView);
+    viewControllers["UILoginView"] = loginViewController;
+```
+First, prepare a map to store UIViewControllers.
+
+```cpp
+ string nextView;
+ string currentView = "UILoginView";
+
+ //control the switch
+while(1){
+  nextView = viewControllers[currentView]->loadView();
+  currentView = nextView;
+  if(currentView=="UIAdminOptionView"&&viewControllers["UIAdminOptionView"]==NULL){
+      UIAdminOptionView *adminOptionView = new UIAdminOptionView(windowFrame2,StarBorder);
+      UIAdminOptionViewController *adminOptionViewController = new UIAdminOptionViewController(adminOptionView);
+      viewControllers["UIAdminOptionView"] = adminOptionViewController;
+  }else{
+      if(currentView=="UICoachOptionView"&&viewControllers["UICoachOptionView"]==NULL){
+          UICoachOptionView *coachOptionView = new UICoachOptionView(windowFrame2,StarBorder);
+          UICoachOptionViewController *coachOptionViewController = new UICoachOptionViewController(coachOptionView);
+          viewControllers["UICoachOptionView"] = coachOptionViewController;
+      }
+  }
+  system("cls");
+}
+```
+That's is how to switch between different ViewControllers.
+
+By the way,their is a sample of how to use UIOptionView
+```cpp
+ vector<string> r1;
+ r1.push_back("name");
+ r1.push_back("password");
+ r1.push_back("age");
+ r1.push_back("phonenumber");
+ r1.push_back("salary");
+ r1.push_back("bonus");
+ UIRegisterAdministratorViewController *registerAdminViewController = new UIRegisterAdministratorViewController(
+                                                                     r1,"Administrator");
+ viewControllers["UIRegisterAdministratorView"] = registerAdminViewController;
+ ```
+ UIRegisterAdministratorViewController has a UIOptionView,and it take the vector r1 as a parameter,
+ Don't forget to addEventlistener for the UIOptionView!!!!
+ 
