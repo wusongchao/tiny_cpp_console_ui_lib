@@ -7,9 +7,12 @@
 
 #pragma warning (disable: 4786)
 
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+#ifdef _MSC_VER
+    #pragma warning(disable: 4786)
+    #if _MSC_VER > 1000
+        #pragma once
+    #endif // _MSC_VER > 1000
+#endif
 
 #include<iostream>
 #include<vector>
